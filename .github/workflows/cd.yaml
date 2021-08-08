@@ -1,0 +1,12 @@
+name: CD
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deployStaticSite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Runs a Fake Test Script
+        run: echo Hello
