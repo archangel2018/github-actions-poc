@@ -11,3 +11,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: Runs a Fake Test Script
         run: test -f index.html
+      - name: Create status check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BUILD_COMMIT=$(git rev-parse HEAD)
+          curl \
+          -X POST \
+          -H "Authorization: Bearer $_GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/archangel2018/github-actions-poc/check-runs \
+          -d '{"name":"build", "head_sha": "'"$BUILD_COMMIT"'", "status": "completed", "conclusion": "success" }'
