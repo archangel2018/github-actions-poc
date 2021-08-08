@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Runs a Fake Test Script
-        run: grep 'COMMIT_HASH' index.html
+        run: grep 'COMMIT_HASH555' index.html
