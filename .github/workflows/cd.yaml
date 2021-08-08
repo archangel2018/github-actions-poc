@@ -8,5 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Runs a Fake Test Script
-        run: echo Hello
+      - name: Deploy to heady-believe.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'heady-believe.surge.sh'
+          project: '.'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
